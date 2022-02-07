@@ -1,0 +1,107 @@
+% http://latex.silmaril.ie/formattinginformation/writing.html
+
+\documentclass[a4paper]{article}
+\usepackage[a4paper,left=4.8em,top=4.8em,bottom=4.8em,right=4.8em]{geometry}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage[bookmarks,pdfusetitle]{hyperref}
+\usepackage{float}
+
+\setcounter{secnumdepth}{3}
+\hypersetup{colorlinks=true,linkcolor=.,filecolor=purple,urlcolor=teal}
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.4em}
+
+\newenvironment{itemizesmol}{
+\vspace{-\topsep}
+\begin{itemize}
+\setlength{\itemsep}{-0.1em}
+}{
+\end{itemize}
+\vspace{-\topsep}
+}
+
+\begin{document}
+
+\title{Multilayer perceptron}
+\author{alek3y}
+\date{}
+\maketitle
+
+\section{Introduction}
+
+The \textbf{multilayer perceptron} is one of the most common type of neural networks. Specifically, a feedfoward artificial neural network (\textbf{FFNN}).
+
+The fundamental components of a neural network are:
+
+\begin{itemizesmol}
+\item
+\textbf{Weights}: They're used to determine the importance of a single neuron with respect to the next neuron.
+\item
+\textbf{Neurons}: They're like cells of the network that have the task of computing the \href{https://qr.ae/pGEzdE}{weighted sum} of the neurons on the previous layer (called \textit{inputs}) through the use of \textit{weights}.
+\item
+\textbf{Biases}: They help to determine how easy it is for the network to consider their associated neuron active\footnote{\href{https://stackoverflow.com/a/54651771}{What is the role of the bias in neural networks?}}, i.e. with a big bias it's easy for the neuron to be active, but with a negative bias it's more difficult.
+\end{itemizesmol}
+
+All neurons of this type of perceptron are connected between each layer.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=14em]{assets/ann-layers.pdf}
+\caption{Neural network with one hidden layer}
+\label{fig:ann-layers}
+\end{figure}
+
+% TODO: Input layer, hidden layers and output layer
+
+\subsection{Linearity}
+
+\subsubsection{Linear perceptron}
+
+Linear perceptrons classifiers, also called \textbf{single-layer perceptrons}, are the \textit{simplest} feedfoward neural network available.
+They're limited to to \textit{linearly separable} datasets, which are a set of points that \textbf{can} be separated by a linear function for classification.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=18em]{assets/dataset-linear.png}
+\caption{Dataset separated by the linear function $f(x)$}
+\label{fig:dataset-linear}
+\end{figure}
+
+As it can be seen on \autoref{fig:dataset-linear}, the straight line $f(x)$ is able to separate the set of \textit{blue} and \textit{orange} points correctly, which allows a linear perceptron to classify them.
+
+Ideally, the network just has to learn what the values of the slope $m$ and the intercept $q$ are for the line $f(x) = mx + q$.
+
+\subsubsection{Non-linear perceptron}
+
+For a more complex classification, \textbf{multilayer perceptrons} are necessary.
+
+As the name implies, for a perceptron to be \textit{multilayer} it has to have at least one hidden layer. \\
+Furthermore, a non-linear \textit{activation function} \textbf{must} be used for the network the be non-linear itself.
+
+% TODO: Mention forward propagation on the weighted sum
+An \textbf{activation function} is a function that changes the weighted sum of a neuron to be non-linear.
+
+The two main activation functions are the \textbf{sigmoid} and the \textbf{ReLU} function as shown in \autoref{fig:activation-functions}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=14em]{assets/activation-functions.pdf}
+\caption{$r(x)$ as \textit{ReLU}, and $s(x)$ as \textit{sigmoid}}
+\label{fig:activation-functions}
+\end{figure}
+
+The equation for the \textit{sigmoid} function is $s(x)=\frac{1}{1 + e^{-x}}$, which maps its values to the range $\left[0, 1\right]$. \\
+The \textit{ReLU} is expressed as $r(x)=max(0, x)$ and it ignores everything but the positive part of its argument.
+
+% TODO:
+%This type of network is considered to be capable of approximating any continuous function\footnote{\href{https://www.youtube.com/watch?v=Ijqkc7OLenI}{The Universal Approximation Theorem for neural networks}}, as proven by the \href{https://en.wikipedia.org/wiki/Universal_approximation_theorem}{universal approximation theorem}.
+%
+%\begin{figure}[H]
+%\centering
+%\includegraphics[width=18em]{assets/dataset-nonlinear.png}
+%\caption{Complex dataset separated by $g(x)$}
+%\label{fig:dataset-nonlinear}
+%\end{figure}
+
+\end{document}
