@@ -4,22 +4,18 @@
 \usepackage[a4paper,left=4.8em,top=4.8em,bottom=4.8em,right=4.8em]{geometry}
 \usepackage{graphicx}
 \usepackage{xcolor}
-\usepackage[bookmarks,pdfusetitle]{hyperref}
 \usepackage{float}
+\usepackage[bottom]{pkgs/footmisc}
+
+\usepackage[bookmarks,pdfusetitle]{hyperref}
+\hypersetup{colorlinks=true,linkcolor=.,filecolor=purple,urlcolor=teal}
+
+\usepackage{pkgs/enumitem}
+\setlist{nosep}
 
 \setcounter{secnumdepth}{3}
-\hypersetup{colorlinks=true,linkcolor=.,filecolor=purple,urlcolor=teal}
 \setlength{\parindent}{0em}
 \setlength{\parskip}{0.4em}
-
-\newenvironment{itemizesmol}{
-\vspace{-\topsep}
-\begin{itemize}
-\setlength{\itemsep}{-0.1em}
-}{
-\end{itemize}
-\vspace{-\topsep}
-}
 
 \begin{document}
 
@@ -34,14 +30,14 @@ The \textbf{multilayer perceptron} is one of the most common type of neural netw
 
 The fundamental components of a neural network are:
 
-\begin{itemizesmol}
+\begin{itemize}
 \item
 \textbf{Weights}: They're used to determine the importance of a single neuron with respect to the next neuron.
 \item
 \textbf{Neurons}: They're like cells of the network that have the task of computing the \href{https://qr.ae/pGEzdE}{weighted sum} of the neurons on the previous layer (called \textit{inputs}) through the use of \textit{weights}.
 \item
 \textbf{Biases}: They help to determine how easy it is for the network to consider their associated neuron active\footnote{\href{https://stackoverflow.com/a/54651771}{What is the role of the bias in neural networks?}}, i.e. with a big bias it's easy for the neuron to be active, but with a negative bias it's more difficult.
-\end{itemizesmol}
+\end{itemize}
 
 All neurons of this type of perceptron are connected between each layer.
 
@@ -96,12 +92,12 @@ Furthermore, a non-linear \textit{activation function} \textbf{must} be used for
 An \textbf{activation function} is a function that changes the weighted sum of a neuron to be non-linear.
 Two honorable mentions, as show in \autoref{fig:activation-functions}, are:
 
-\begin{itemizesmol}
+\begin{itemize}
 \item
 \textbf{Sigmoid}, which is expressed as $s(x)=\frac{1}{1 + e^{-x}}$, and it maps its argument to the range $\left[0, 1\right]$.
 \item
 \textbf{ReLU}, expressed as $r(x)=max(0, x)$ and it ignores everything but the positive part of its argument.
-\end{itemizesmol}
+\end{itemize}
 
 % TODO: Talk about ReLU dying problem? (https://en.wikipedia.org/wiki/Rectifier_(neural_networks)#Potential_problems)
 
