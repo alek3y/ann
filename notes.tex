@@ -52,13 +52,26 @@ All neurons of this type of perceptron are connected between each layer.
 \label{fig:ann-layers}
 \end{figure}
 
-% TODO: Input layer, hidden layers and output layer
+\subsection{Layers}
+
+The neurons of the network are grouped into multiple layers depending on their role.
+
+Being the first layer, the \textbf{input layer} is the only one that doesn't alter its input, which would be the external data. \\
+Consider a \textit{25 by 25 pixels} image of cat, a cute one.
+For the network to recognize it you might want to feed it each pixel, which would make the input layer \textit{625 neurons} in size.
+
+After its computations, the network processes the data on the \textbf{output layer}, which produces the ultimate result. \\
+Continuing with the previous example, the output layer could consist of \textit{2 neurons}. One that classifies the image as \textit{"Dog"} and the other as \textit{"Cat"}.
+
+Between the previously mentioned layers, there are one or more \textbf{hidden layers}.
+Broadly speaking, their task is to recognize patterns by building on top of the previous ones to get more and more sophisticated features. \\
+Before being able to actually classify the picture, the network might learn to recognize edges, then the shape of the eyes and mouth, and lastly their positions.
 
 \subsection{Linearity}
 
 \subsubsection{Linear perceptron}
 
-Linear perceptrons classifiers, also called \textbf{single-layer perceptrons}, are the \textit{simplest} feedfoward neural network available.
+Linear perceptrons classifiers, also called \textbf{single-layer perceptrons}, are the \textit{simplest} feedfoward neural network available, as they have no hidden layers.
 They're limited to to \textit{linearly separable} datasets, which are a set of points that \textbf{can} be separated by a linear function for classification.
 
 \begin{figure}[H]
