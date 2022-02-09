@@ -61,7 +61,7 @@ Continuing with the previous example, the output layer could consist of \textit{
 
 Between the previously mentioned layers, there are one or more \textbf{hidden layers}.
 Broadly speaking, their task is to recognize patterns by building on top of the previous ones to get more and more sophisticated features. \\
-Before being able to actually classify the picture, the network might learn to recognize edges, then the shape of the eyes and mouth, and lastly their positions.
+To actually classify the cat picture, the network might learn to recognize edges, then the shape of the eyes and mouth, and lastly their positions.
 
 \subsection{Linearity}
 
@@ -96,10 +96,9 @@ Two honorable mentions, as show in \autoref{fig:activation-functions}, are:
 \item
 \textbf{Sigmoid}, which is expressed as $s(x)=\frac{1}{1 + e^{-x}}$, and it maps its argument to the range $\left[0, 1\right]$.
 \item
-\textbf{ReLU}, expressed as $r(x)=max(0, x)$ and it ignores everything but the positive part of its argument.
+\textbf{ReLU}, expressed as $r(x)=max(0, x)$, it ignores everything but the positive part of its argument.
+Although it imporoves the performance, some neurons might ultimately become inactive for all inputs, effectively dying.
 \end{itemize}
-
-% TODO: Talk about ReLU dying problem? (https://en.wikipedia.org/wiki/Rectifier_(neural_networks)#Potential_problems)
 
 \begin{figure}[H]
 \centering
