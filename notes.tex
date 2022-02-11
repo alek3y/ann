@@ -5,6 +5,7 @@
 \usepackage{graphicx}
 \usepackage{xcolor}
 \usepackage{float}
+\usepackage{subcaption}
 \usepackage[bottom]{pkgs/footmisc}
 
 \usepackage[bookmarks,pdfusetitle]{hyperref}
@@ -117,5 +118,37 @@ Because of that, the neural network can learn to approximate the required non-li
 \caption{Complex dataset separated by $g(x)$}
 \label{fig:dataset-nonlinear}
 \end{figure}
+
+\subsection{Learning}
+
+For the neural network to learn and improve, it has to know how good its output was.
+This result is given by the \textbf{loss function}, which computes the \textbf{cost} of the entire network given their parameters (\textit{weights} and \textit{biases}).
+
+Lowering the cost as much as possible is the goal of the network, and to do that every single parameter is going to be slightly altered.
+This alteration is found with the \textit{gradient} of the loss function.
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}{14em}
+\includegraphics[width=\textwidth]{assets/descent-local.pdf}
+\caption{Local minima\footnotemark}
+\end{subfigure}
+\hspace{1em}
+\begin{subfigure}{14em}
+\includegraphics[width=\textwidth]{assets/descent-global.pdf}
+\caption{Global minima}
+\end{subfigure}
+\caption{Gradient descent for $A_x$}
+\label{fig:descent}
+\end{figure}
+
+\footnotetext{\url{https://www.desmos.com/calculator/jcksoztqbl}}
+
+Let's take $A_x$ as one parameter to be altered on the loss function $C(x)$, as shown in both situations in \autoref{fig:descent}.
+
+Just using the direction of the \textit{gradient} for $A_x$ would lead the point towards the fastest increase in the function, which is the opposite of that intended.
+Getting the direction of fastest decrease is simply a matter of using the \textbf{negative} of said \textit{gradient}, which is referred to as \textbf{gradient descent}.
+
+The \textit{negative gradient} would push $A$ towards $M$, moving it in $B$'s place.
 
 \end{document}
