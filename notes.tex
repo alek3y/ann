@@ -1,4 +1,5 @@
 % http://latex.silmaril.ie/formattinginformation/writing.html
+% https://ml-cheatsheet.readthedocs.io/en/latest/index.html
 
 \documentclass[a4paper]{article}
 \usepackage[a4paper,left=4.8em,top=4.8em,bottom=4.8em,right=4.8em]{geometry}
@@ -7,6 +8,7 @@
 \usepackage{float}
 \usepackage{subcaption}
 \usepackage[bottom]{pkgs/footmisc}
+\usepackage{amsmath}
 
 \usepackage[bookmarks,pdfusetitle]{hyperref}
 \hypersetup{colorlinks=true,linkcolor=.,filecolor=purple,urlcolor=teal}
@@ -137,8 +139,9 @@ This alteration is found with the \textit{gradient} of the loss function.
 \begin{subfigure}{14em}
 \includegraphics[width=\textwidth]{assets/descent-global.pdf}
 \caption{Global minima}
+\label{fig:descent-global}
 \end{subfigure}
-\caption{Gradient descent for $A_x$}
+\caption{Gradient descent for $A$}
 \label{fig:descent}
 \end{figure}
 
@@ -147,8 +150,56 @@ This alteration is found with the \textit{gradient} of the loss function.
 Let's take $A_x$ as one parameter to be altered on the loss function $C(x)$, as shown in both situations in \autoref{fig:descent}.
 
 Just using the direction of the \textit{gradient} for $A_x$ would lead the point towards the fastest increase in the function, which is the opposite of that intended.
-Getting the direction of fastest decrease is simply a matter of using the \textbf{negative} of said \textit{gradient}, which is referred to as \textbf{gradient descent}.
+Getting the direction of fastest decrease is simply a matter of using the \textbf{negative} of said \textit{gradient} which, in this case, would push $A$ towards $M$ moving it in $B$'s place.
 
-The \textit{negative gradient} would push $A$ towards $M$, moving it in $B$'s place.
+This is referred to as \textbf{gradient descent} and is expressed as $-\eta\nabla C(x)$.
+
+\subsubsection{Learning rate}
+
+The size of each step towards a minima $M$ is scaled down or up by the constant $\eta$, called \textbf{learning rate}, inside the \textit{gradient descent} formula.
+Choosing the right constant is very significant for the learning efficiency of the network.
+
+Using a constant that is too small might make the network terribly slow at learning. \\
+Using one that is too large instead, might overshoot the targeted minima when stepping, e.g. $A$ on \autoref{fig:descent-global} might end up falling on $M_1$ instead of $M_2$.
+
+% TODO: \subsubsection{Minima}
+
+\subsubsection{Dimensions}
+
+Plotting the loss function as if it had just one parameter like shown in \autoref{fig:descent} isn't really realistic.
+In reality, you might have multiple thousands of those \textit{weights} and \textit{biases}.
+
+So, if the \textit{x-axis} is the value of that one parameter, adding more will result in increasing the dimensional space of the graph.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=18em]{assets/descent-3d.png}
+\caption{Gradient descent for $E$ in a three-dimensional space}
+\label{fig:dimensions}
+\end{figure}
+
+As proof, take the two weights $w_1$ and $w_2$ as shown in \autoref{fig:dimensions}. \\
+The plotted graph shows the cost for all of the possible combinations of the two values.
+Therefore, the aim of the \textit{gradient descent} is to make slight alterations to those two values so that it will bring $E$ closer to nearest minima.
+
+\begin{equation}
+-\eta\nabla C\left(
+\begin{bmatrix}
+w_1 \\
+w_2 \\
+\vdots \\
+w_n
+\end{bmatrix}
+\right) =
+\begin{bmatrix}
+\Delta w_1 \\
+\Delta w_2 \\
+\vdots \\
+\Delta w_n
+\end{bmatrix}
+\label{eq:dimensions-gradient}
+\end{equation}
+
+Although it might be difficult to visualize, \hyperref[eq:dimensions-gradient]{the previous equation} shows how the result is the alteration $\Delta w_i$ that will then be added to its corresponding parameter $w_i$, which will move the point on the $n$-dimensional space.
 
 \end{document}
