@@ -66,6 +66,8 @@ Between the previously mentioned layers, there are one or more \textbf{hidden la
 Broadly speaking, their task is to recognize patterns by building on top of the previous ones to get more and more sophisticated features. \\
 To actually classify the cat picture, the network might learn to recognize edges, then the shape of the eyes and mouth, and lastly their positions.
 
+\newpage
+
 \subsection{Linearity}
 
 \subsubsection{Linear perceptron}
@@ -109,6 +111,8 @@ Although it imporoves the performance, some neurons might ultimately become inac
 \caption{$r(x)$ as \textit{ReLU}, and $s(x)$ as \textit{sigmoid}}
 \label{fig:activation-functions}
 \end{figure}
+
+\newpage
 
 This type of network is considered to be capable of approximating any continuous function\footnote{\href{https://www.youtube.com/watch?v=Ijqkc7OLenI}{The Universal Approximation Theorem for neural networks}}, as proven by the \href{https://en.wikipedia.org/wiki/Universal_approximation_theorem}{universal approximation theorem}.
 
@@ -160,9 +164,15 @@ The size of each step towards a minima $M$ is scaled down or up by the constant 
 Choosing the right constant is very significant for the learning efficiency of the network.
 
 Using a constant that is too small might make the network terribly slow at learning. \\
-Using one that is too large instead, might overshoot the targeted minima when stepping, e.g. $A$ on \autoref{fig:descent-global} might end up falling on $M_1$ instead of $M_2$.
+However, using one that is too large might overshoot the targeted minima when stepping, e.g. $A$ on \autoref{fig:descent-global} might end up falling on $M_1$ instead of $M_2$.
 
-% TODO: \subsubsection{Minima}
+\subsubsection{Minima}
+
+Learning is a matter of minimizing the overall cost of the network, by changing the parameters so that it will reach the nearest concavity called \textbf{local minima}.
+
+The loss function is very likely to have plenty of minimas though, and the most effective is called \textbf{global minima}. \\
+This is why it is not guaranteed for a trained network to have the most performant configuration.
+It all depends on the initial values assigned to each parameter.
 
 \subsubsection{Dimensions}
 
